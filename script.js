@@ -5,16 +5,24 @@ let computerScore = 0;
 // Retrieves the computer's input on whether rock, paper, or scissors was chosen
 function getComputerChoice() {
     // picks a random number between 0 and 2
-    let comChoice = Math.floor(Math.random() * 3);
+    let comNum = Math.floor(Math.random() * 3);
 
-    if (comChoice === 1) {
-        return "Rock";
+    let comChoice;
+
+    if (comNum === 1) {
+        comChoice = "rock";
+        console.log(`The computer chose ${comChoice}.`);
+        return comChoice;
     }
-    else if (comChoice === 2) {
-        return "Paper";
+    else if (comNum === 2) {
+        comChoice = "paper";
+        console.log(`The computer chose ${comChoice}.`);
+        return comChoice;   
     }
     else {
-        return "Scissors";
+        comChoice = "scissors";
+        console.log(`The computer chose ${comChoice}.`);
+        return comChoice;
     }
 }
 
@@ -22,13 +30,13 @@ function getComputerChoice() {
 function getHumanChoice() {
     let choice = prompt("Choose either rock, paper, or scissors: ");
 
-    if (choice === "Rock") {
+    if (choice === "rock") {
         console.log(`You chose ${choice}.`);
     }
-    else if (choice === "Paper") {
+    else if (choice === "paper") {
         console.log(`You chose ${choice}.`);
     }
-    else if (choice === "Scissors") {
+    else if (choice === "scissors") {
         console.log(`You chose ${choice}.`);
     }
     else {
@@ -37,5 +45,3 @@ function getHumanChoice() {
 
     return choice;
 }
-
-console.log(getHumanChoice());
