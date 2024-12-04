@@ -28,7 +28,7 @@ function getComputerChoice() {
 
 // Retrieves the player's input on whether rock, paper, or scissors was chosen
 function getHumanChoice() {
-    let choice = prompt("Choose either rock, paper, or scissors: ");
+    let choice = prompt("Choose either rock, paper, or scissors: ").toLowerCase();
 
     if (choice === "rock") {
         console.log(`You chose ${choice}.`);
@@ -45,3 +45,51 @@ function getHumanChoice() {
 
     return choice;
 }
+
+// Plays one round of Rock, Paper, Scissors
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+        console.log(`Both you and the computer used ${humanChoice}. It's a tie!`);
+    }
+
+    else if (humanChoice === "rock") {
+        if (computerChoice === "scissors") {
+            console.log("Rock crushes scissors! You win!");
+            humanScore += 1;
+        }
+        else {
+            console.log("Paper covers rock! You lose!");
+            computerScore += 1; 
+        }
+    }
+
+    else if (humanChoice === "paper") {
+        if (computerChoice === "rock") {
+            console.log("Paper covers rock! You win!");
+            humanScore += 1;
+        }
+        else {
+            console.log("Scissors cuts paper! You lose!");
+            computerScore += 1;
+        }
+    }
+
+    else if (humanChoice === "scissors") {
+        if (computerChoice === "paper") {
+            console.log("Scissors cuts paper! You win!");
+            humanScore += 1;
+        }
+        else {
+            console.log("Rock crushes scissors! You lose!");
+            computerChoice += 1;
+        }
+    } 
+
+    // Prints out the scoreboard
+    console.log(`-------- Score --------\nPlayer: ${humanScore} | Computer: ${computerScore}`);
+  }
+  
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+  
+playRound(humanSelection, computerSelection);
