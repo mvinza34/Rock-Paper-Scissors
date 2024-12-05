@@ -51,7 +51,6 @@ function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
         console.log(`Both you and the computer used ${humanChoice}. It's a tie!`);
     }
-
     else if (humanChoice === "rock") {
         if (computerChoice === "scissors") {
             console.log("Rock crushes scissors! You win!");
@@ -62,7 +61,6 @@ function playRound(humanChoice, computerChoice) {
             computerScore += 1; 
         }
     }
-
     else if (humanChoice === "paper") {
         if (computerChoice === "rock") {
             console.log("Paper covers rock! You win!");
@@ -73,7 +71,6 @@ function playRound(humanChoice, computerChoice) {
             computerScore += 1;
         }
     }
-
     else if (humanChoice === "scissors") {
         if (computerChoice === "paper") {
             console.log("Scissors cuts paper! You win!");
@@ -83,13 +80,37 @@ function playRound(humanChoice, computerChoice) {
             console.log("Rock crushes scissors! You lose!");
             computerChoice += 1;
         }
-    } 
+    }
+    else {
+        console.log("You didn't pick a valid choice. This round doesn't count.");
+    }
 
     // Prints out the scoreboard
     console.log(`-------- Score --------\nPlayer: ${humanScore} | Computer: ${computerScore}`);
-  }
-  
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-  
-playRound(humanSelection, computerSelection);
+}
+
+// Plays an entire game of Rock, Paper, Scissors 
+function playGame() {
+    console.log(`----------------- Rock, Paper, Scissors -----------------\n
+Welcome to Rock, Paper, Scissors!\nYou and the computer will play five rounds of the game.\nMay the best player win!`);
+    
+    // Does five rounds of the game
+    for (let i = 0; i < 5; i++) {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+        playRound(humanSelection, computerSelection);
+    }
+
+    // Checks who has the most amount of points when the game finally ends
+    if (humanScore > computerScore) {
+        console.log("You win the game! Congratulations!");
+    }
+    else if (humanScore < computerScore) {
+        console.log("The computer wins the game! Better luck next time!");                                               
+    }
+    else {
+        console.log("It's a draw! The game is over!");
+    } 
+}
+
+playGame();
